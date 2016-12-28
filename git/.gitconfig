@@ -1,0 +1,20 @@
+[push]
+	default = simple
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+	d = difftool
+
+
+[user]
+	name = Wang, Yongqiang
+	email = yongqiang.wang@alibaba-inc.com
+
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
