@@ -22,6 +22,8 @@ ln -sfv "$DOTFILES_DIR/bash/.bashrc" ~/.bashrc
 
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
 ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~/.vimrc
+mkdir -p ~/.vim/templates 
+ln -sfv "$DOTFILES_DIR/vim/python.py" ~/.vim/templates/python.py
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~/.tmux.conf
 
 
@@ -34,7 +36,6 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 # Install extra stuff
-
 if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install.sh" ]; then
-  . "$EXTRA_DIR/install.sh"
+  . $EXTRA_DIR/install.sh
 fi

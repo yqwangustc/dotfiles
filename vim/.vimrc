@@ -18,6 +18,8 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'basepi/vim-conque'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-scripts/perl-support.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -51,6 +53,9 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " fdm 
 set fdm=syntax
+
+" encoding UTF8 
+set encoding=utf-8
 
 " ========================================
 "  plugin specified settings
@@ -140,5 +145,17 @@ nmap <Leader>b :ConqueTermVSplit bash<CR>
 "   8. mapping for pyclewn 
 nmap <Leader>p :Pyclewn<CR>:Cmapkeys<CR>
 
+"   9. python autocmd 
+au BufNewFile,BufRead *.py
+    \ set tabstop=4     | 
+    \ set softtabstop=4 |
+    \ set shiftwidth=4  |
+    \ set textwidth=79  |
+    \ set expandtab     |
+    \ set autoindent    |
+    \ set fileformat=unix |
 
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufNewFile *.py 0r ~/.vim/templates/python.py
 
