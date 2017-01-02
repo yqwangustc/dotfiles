@@ -7,15 +7,6 @@ alias la='ls -lAh --color '
 alias ll='ls -lh --color '
 alias ls='ls -G --color '
 alias lsa='ls -lah --color '
-
-alias gpu41='ssh -Y yongqiang.wang@10.101.74.41'
-alias gpu42='ssh -Y yongqiang.wang@10.101.74.42'
-alias gpu43='ssh -Y yongqiang.wang@10.101.74.43'
-
-alias dev89='ssh yongqiang.wang@10.125.224.89'
-alias dev90='ssh yongqiang.wang@10.125.224.90'
-alias dev91='ssh yongqiang.wang@10.125.224.91'
-alias dev92='ssh yongqiang.wang@10.125.224.92'
 alias tmux='tmux -2'
 
 alias pym='python3 -m py_compile' 
