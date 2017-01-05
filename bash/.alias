@@ -10,7 +10,7 @@ alias lsa='ls -lah --color '
 alias tmux='tmux -2'
 
 alias pym='python3 -m py_compile' 
-
+alias python='python3'
 
 ed ()
 {
@@ -23,27 +23,4 @@ sr ()
   source $bashrc
 }
 
-#mnt ()
-#{
-#    declare -A mach
-#    mach=(  [dev89]=10.125.224.89 \
-#            [dev90]=10.125.224.90 \
-#            [dev91]=10.125.224.91 \
-#            [dev92]=10.125.224.92 \
-#            [gpu41]=10.101.74.41 \
-#            [gpu42]=10.101.74.42 \
-#            [gpu43]=10.101.74.43  )
-#
-#    for i in ${!mach[@]} ; do 
-#        name=$i
-#        machine=${mach[$i]}
-#
-#        if ( ! mountpoint -q ~/mnt/$name ) ; then 
-#            echo "maching $machine:/ ==> /mnt/$name "
-#            sshfs -o IdentityFile=/home/yongqiang.wang/.ssh/id_rsa \
-#                yongqiang.wang@$machine:/ /home/yongqiang.wang/mnt/$name
-#        fi
-#    done 
-#
-#}
 

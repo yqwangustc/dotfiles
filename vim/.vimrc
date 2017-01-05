@@ -20,6 +20,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'basepi/vim-conque'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/perl-support.vim'
+Plugin 'vim-scripts/pylint.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
