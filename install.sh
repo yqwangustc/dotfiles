@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # Get current dir (so run this script from anywhere)
-export DOTFILES_DIR EXTRA_DIR
-DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-EXTRA_DIR="$HOME/.extra"
+export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export EXTRA_DIR="$DOTFILES_DIR/extra"
 
 # Update dotfiles itself first
 
@@ -35,7 +34,12 @@ if [ "$(uname)" == "Darwin" ]; then
   ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
 fi
 
-# Install extra stuff
+# Install extra stuff (such as pip)
 if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install.sh" ]; then
   . $EXTRA_DIR/install.sh
 fi
+
+# Install pyclewn for vim
+echo "installing pyclewn"
+vim/installPyclewn.py
+

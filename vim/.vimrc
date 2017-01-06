@@ -50,7 +50,7 @@ set term=screen-256color
 " wrapping at 80 
 set textwidth=80
 let &colorcolumn=join(range(81,999),",")
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
+highlight ColorColumn ctermbg=237 guibg=#2c2d27
 
 " fdm 
 set fdm=syntax
@@ -62,11 +62,11 @@ set encoding=utf-8
 "  plugin specified settings
 "  =======================================
 "  0. color scheme 
-set t_Co=256
+"set t_Co=256
 set background=dark
-colorscheme desert 
+colorscheme 256-grayvim
 set cursorline 
-"hi CursorLine ctermfg=NONE ctermbg=251 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
+hi CursorLine ctermfg=NONE ctermbg=239 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
 hi Search ctermfg=NONE ctermbg=243 cterm=bold guifg=NONE guibg=NONE gui=underline
 "   1. taglist 
 let Tlist_Show_One_File = 1           
@@ -156,7 +156,7 @@ au BufNewFile,BufRead *.py
     \ set autoindent    |
     \ set fileformat=unix |
 
-highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"highlight BadWhitespace ctermbg=red guibg=darkred
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.cpp match BadWhitespace /\s\+$/
 au BufNewFile *.py 0r ~/.vim/templates/python.py
 
