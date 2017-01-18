@@ -25,6 +25,7 @@ mkdir -p ~/.vim/templates
 ln -sfv "$DOTFILES_DIR/vim/python.py" ~/.vim/templates/python.py
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~/.tmux.conf
 
+ln -sfv "$DOTFILES_DIR/latexmk/.latexmkrc" ~/.latexmkrc
 
 # Package managers & packages
 

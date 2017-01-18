@@ -1,5 +1,5 @@
 bashrc=~/.bashrc
-myself=~/.bash_aliases
+myself=~/.bash_alias
 
 
 alias l='ls -lah --color '
@@ -8,9 +8,15 @@ alias ll='ls -lh --color '
 alias ls='ls -G --color '
 alias lsa='ls -lah --color '
 alias tmux='tmux -2'
-
 alias pym='python3 -m py_compile' 
 alias python='python3'
+
+##########################
+# work related alias 
+##########################
+alias note='cd ~/Work/Documents/Notes'
+alias wfst='cd ~/Build/openfst/openfst-1.5.4/src'
+alias timit='cd ~/Work/Code/kaldi/egs/timit/s5'
 
 ed ()
 {
@@ -23,4 +29,17 @@ sr ()
   source $bashrc
 }
 
+mypwd()
+{
+  curd=`pwd`
+  if [ ! -z "$1" ]; then 
+    if [ -e $1 ] ; then 
+      cd $1
+      tgt=`pwd`
+    else
+      echo "target directory $1 not exist"
+    fi
+  fi
+  echo $tgt
+}
 

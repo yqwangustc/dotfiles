@@ -21,6 +21,7 @@ Plugin 'basepi/vim-conque'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/perl-support.vim'
 Plugin 'vim-scripts/pylint.vim'
+Plugin 'vim-latex/vim-latex'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -50,7 +51,7 @@ set term=screen-256color
 " wrapping at 80 
 set textwidth=80
 let &colorcolumn=join(range(81,999),",")
-highlight ColorColumn ctermbg=237 guibg=#2c2d27
+highlight ColorColumn ctermbg=237 guibg=DarkGray
 
 " fdm 
 set fdm=syntax
@@ -64,7 +65,11 @@ set encoding=utf-8
 "  0. color scheme 
 "set t_Co=256
 set background=dark
-colorscheme 256-grayvim
+if has("gui_running")
+  colorscheme desert
+else
+  colorscheme 256-grayvim
+endif
 set cursorline 
 hi CursorLine ctermfg=NONE ctermbg=239 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
 hi Search ctermfg=NONE ctermbg=243 cterm=bold guifg=NONE guibg=NONE gui=underline
@@ -155,8 +160,10 @@ au BufNewFile,BufRead *.py
     \ set expandtab     |
     \ set autoindent    |
     \ set fileformat=unix |
-
 "highlight BadWhitespace ctermbg=red guibg=darkred
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.cpp match BadWhitespace /\s\+$/
 au BufNewFile *.py 0r ~/.vim/templates/python.py
+
+" for latex, automatic generate begin end for word under cursor
+map <C-B> YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>kA
 
