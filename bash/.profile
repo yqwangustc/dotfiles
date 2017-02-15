@@ -12,7 +12,7 @@ fi
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
 
-READLINK=$(which greadlink || which readlink)
+READLINK=$(which readlink)
 CURRENT_SCRIPT=$BASH_SOURCE
 
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then

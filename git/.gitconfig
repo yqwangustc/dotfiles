@@ -12,7 +12,12 @@
 
 [user]
 	name = Wang, Yongqiang
-	email = yongqiang.seagull@gmail.com
+        email = yqw@fb.com
+
+[http]
+    proxy = fwdproxy:8080
+[https]
+    proxy = fwdproxy:8080
 
 [diff]
 	tool = vimdiff

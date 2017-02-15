@@ -14,9 +14,7 @@ alias python='python3'
 ##########################
 # work related alias 
 ##########################
-alias note='cd ~/Work/Documents/Notes'
-alias wfst='cd ~/Build/openfst/openfst-1.5.4/src'
-alias timit='cd ~/Work/Code/kaldi/egs/timit/s5'
+alias split='cd /home/yqw/fbsource/fbcode/rfe'
 
 ed ()
 {

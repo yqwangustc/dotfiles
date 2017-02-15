@@ -41,6 +41,6 @@ if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install.sh" ]; then
 fi
 
 # Install pyclewn for vim
-echo "installing pyclewn"
-vim/installPyclewn.py
+#echo "installing pyclewn"
+#vim/installPyclewn.py
 
