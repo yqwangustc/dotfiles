@@ -27,6 +27,16 @@ sr ()
   source $bashrc
 }
 
+gvim()
+{
+  if [[ $(hostname -s) =~ yqw-mbp ]]; then
+    echo "using mvim"
+    mvim "$@"
+  else
+    vim "$@"
+  fi
+}
+
 mypwd()
 {
   curd=`pwd`
@@ -39,5 +49,19 @@ mypwd()
     fi
   fi
   echo $tgt
+}
+
+latexenv()
+{
+  if [ "$#" -ne 1 ]; then 
+    echo "usage: latexenv <dirname>"
+    return 0
+  fi
+  if [ ! -d "$DOTFILES_DIR/latex" ]; then
+    echo "no latex template installed, check your $DOTFILES_DIR/latex"
+    return 0
+  fi
+  mkdir -p "$1"
+  cp -r "$DOTFILES_DIR/latex"/* "$1"
 }
 

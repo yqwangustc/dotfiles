@@ -1,0 +1,3 @@
+if [[ $(hostname -s) =~ yqw-mbp ]]; then
+  echo "sourcing mbp specific settings"
+fi

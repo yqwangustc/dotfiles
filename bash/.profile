@@ -17,9 +17,9 @@ CURRENT_SCRIPT=$BASH_SOURCE
 
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
   SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
-  DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
+  export DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
 elif [ -d "$HOME/.dotfiles" ]; then
-  DOTFILES_DIR="$HOME/.dotfiles"
+  export DOTFILES_DIR="$HOME/.dotfiles"
 else
   echo "Unable to find dotfiles, exiting."
   return # `exit 1` would quit the shell itself
@@ -59,11 +59,16 @@ fi
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
-
 export OS DOTFILES_DIR EXTRA_DIR
-
 # BEGIN: Block added by chef, to set environment strings
 # Please see https://fburl.com/AndroidProvisioning if you do not use bash
 # or if you would rather this bit of code 'live' somewhere else
-. ~/.fbchef/environment
+if [ -e "~/.fbchef/environment" ]; then 
+  . ~/.fbchef/environment
+fi
 # END: Block added by chef
+
+# sourcing machine-specific settings 
+if [ -e "$DOTFILES_DIR/bash/.machine" ]; then
+  . "$DOTFILES_DIR/bash/.machine"
+fi
