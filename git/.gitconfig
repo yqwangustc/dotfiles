@@ -18,3 +18,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[core]
+	editor = /usr/bin/vim

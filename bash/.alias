@@ -2,11 +2,11 @@ bashrc=~/.bashrc
 myself=~/.bash_alias
 
 
-alias l='ls -lah --color '
-alias la='ls -lAh --color '
-alias ll='ls -lh --color '
-alias ls='ls -G --color '
-alias lsa='ls -lah --color '
+alias l='ls -Glah'
+#alias la='ls -lAh --color '
+#alias ll='ls -lh --color '
+#alias ls='ls -G --color '
+#alias lsa='ls -lah --color '
 alias tmux='tmux -2'
 alias pym='python3 -m py_compile' 
 alias python='python3'

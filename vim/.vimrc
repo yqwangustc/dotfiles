@@ -40,7 +40,8 @@ set whichwrap+=<,>,h,l,[,]
 set hls
 
 if has("gui_running")
-    set guifont=DejaVu\ Sans\ Mono\ 15 
+    set guifont=Monaco:h18
+    set lines=999 columns=9999
     if has("gui_photon")
         set guifont=Courier\ New:s18
     endif
@@ -167,3 +168,8 @@ au BufNewFile *.py 0r ~/.vim/templates/python.py
 " for latex, automatic generate begin end for word under cursor
 map <C-B> YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>kA
 
+" for vim-latex 
+" " TIP: if you write your \label's as \label{fig:something}, then if you
+" " type in \ref{fig: and press <C-n> you will automatically cycle through
+" " all the figure labels. Very useful!
+set iskeyword+=:
