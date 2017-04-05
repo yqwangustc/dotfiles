@@ -1,5 +1,5 @@
 [push]
-	default = simple
+  default = simple
 [alias]
   st = status
   ci = commit
@@ -7,17 +7,16 @@
   co = checkout
   df = diff
   lg = log -p
-	d = difftool
-
-
+  d = difftool
 [user]
-	name = Wang, Yongqiang
-        email = yqw@fb.com
-
-
+  name = Wang, Yongqiang
+  email = yqw@fb.com
+[include]
+  path = ~/.gitconfig.machine
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [difftool]
-	prompt = false
+  prompt = false
 [core]
-	editor = vim
+  editor = vim
+

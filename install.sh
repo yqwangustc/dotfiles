@@ -44,3 +44,9 @@ fi
 #echo "installing pyclewn"
 #vim/installPyclewn.py
 
+# Install machine specific stuff
+## git config 
+machine=$(hostname -s)
+if [ -f "$DOTFILES_DIR/git/${machine}.config" ]; then
+  ln -sfv "$DOTFILES_DIR/git/${machine}.config" ~/.gitconfig.machine
+fi
