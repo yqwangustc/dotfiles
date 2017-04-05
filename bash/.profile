@@ -72,3 +72,8 @@ fi
 if [ -e "$DOTFILES_DIR/bash/.machine" ]; then
   . "$DOTFILES_DIR/bash/.machine"
 fi
+
+
+export PATH=/usr/local/mpi/bin:$PATH:~/local/rtags-install/bin
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/mpi/lib:/usr/local/cudnn-5.1/cuda/lib64:$LD_LIBRARY_PATH
+

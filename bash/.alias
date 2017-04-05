@@ -9,7 +9,7 @@ alias l='ls -Glah'
 #alias lsa='ls -lah --color '
 alias tmux='tmux -2'
 alias pym='python3 -m py_compile' 
-alias python='python3'
+alias python='python'
 
 ##########################
 # work related alias 

@@ -10,18 +10,21 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/c.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'basepi/vim-conque'
+Plugin 'Valloric/YouCompleteMe', {'pinned': 1}
+"Plugin 'basepi/vim-conque'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/perl-support.vim'
 Plugin 'vim-scripts/pylint.vim'
-" Plugin 'vim-latex/vim-latex'
+Plugin 'vim-latex/vim-latex'
+Plugin 'lyuts/vim-rtags'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/Conque-GDB'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -88,6 +91,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic -I ~/fbcode"
 set statusline+=%#warningmsg#
 set statusline+=%*
 
@@ -173,3 +177,31 @@ map <C-B> YpkI\begin{<ESC>A}<ESC>jI\end{<ESC>A}<esc>kA
 " " type in \ref{fig: and press <C-n> you will automatically cycle through
 " " all the figure labels. Very useful!
 set iskeyword+=:
+
+" RTags
+let g:rtagsUseDefaultMappings = 0
+let g:rtagsJumpStackMaxSize = 2000
+let g:rtagsUseLocationList = 0
+noremap <C-T>. :call rtags#JumpTo()<CR>
+noremap <C-T>b <C-o>
+noremap <C-T>f :call rtags#FindRefs()<CR>
+noremap <C-T>n :call rtags#FindRefsByName(input("Pattern? ", "", "customlist,rtags#CompleteSymbols"))<CR>
+noremap <C-T>s :call rtags#FindSymbols(input("Pattern? ", "", "customlist,rtags#CompleteSymbols"))<CR>
+noremap <C-T>r :call rtags#ReindexFile()<CR>
+
+" syntastic
+let g:syntastic_c_include_dirs = [ '~/fbsource/fbcode' ]
+
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_error_symbol = 'x'
+let g:ycm_warning_symbol = '!'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+nnoremap <leader>pg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
+let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
