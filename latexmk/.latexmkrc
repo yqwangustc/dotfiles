@@ -1,1 +1,1 @@
-$pdf_previewer = "okular "
+$pdf_previewer = "open "

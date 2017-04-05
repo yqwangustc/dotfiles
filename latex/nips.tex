@@ -5,7 +5,7 @@
 % before loading nips_2016
 %
 % to avoid loading the natbib package, add option nonatbib:
-% \usepackage[nonatbib]{nips_2016}
+% \usepackage[nonatbib]{nips_2017}
 
 \usepackage{nips}
 
@@ -21,8 +21,12 @@
 \usepackage{amsmath,amssymb}	    % ams
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
+\usepackage{mathtools}      % for bmatrix
+
 
 \newcommand{\bs}[1]{\boldsymbol{#1}}
+\usepackage[ruled]{algorithm2e}
+
 
 \title{}
 
@@ -66,9 +70,30 @@
 % \nipsfinalcopy is no longer used
 \maketitle
 $\bs A$
+
 %\begin{abstract}
 %\end{abstract}
 \section{...}
+
+\begin{algorithm}
+  \textbf{Input:} 
+  \begin{itemize}
+    \item a minibatch $\bs x_1, \dots, \bs x_N$ 
+    \item loss cacluated at each time step $l_1,\dots, l_N$
+  \end{itemize}
+  \textit{1. Initialization:}
+  \begin{align*}
+        \frac{d\,l}{d\,\bs s_{N+1}} &=\bs \delta_{\bs s, N+1} \leftarrow \bs 0\\
+        \bs g_{\mathbf W} &\leftarrow 0 \\
+        \bs g_{\mathbf A} &\leftarrow 0 
+  \end{align*}
+  \textit{2. Recursive:}\\
+  \For{$n=N,\dots,1$}{
+  }
+  \caption{Gadient accumulation procedure for Vanilla RNNs}
+\end{algorithm}
+
+
 
 %\bibliography{mybib}
 %\bibliographystyle{plain}
