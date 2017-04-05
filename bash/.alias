@@ -14,7 +14,6 @@ alias python='python'
 ##########################
 # work related alias 
 ##########################
-alias split='cd /home/yqw/fbsource/fbcode/rfe'
 
 ed ()
 {
@@ -63,5 +62,15 @@ latexenv()
   fi
   mkdir -p "$1"
   cp -r "$DOTFILES_DIR/latex"/* "$1"
+}
+
+function mbuck()
+{
+  python "$DOTFILES_DIR/bash/mybuck.py" $@
+}
+
+function mbucko()
+{
+  python "$DOTFILES_DIR/bash/mybuck-out.py" $@
 }
 
