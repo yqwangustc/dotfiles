@@ -8,15 +8,20 @@ alias l='ls -Glah'
 #alias ls='ls -G --color '
 #alias lsa='ls -lah --color '
 alias tmux='tmux -2'
-alias pym='python3 -m py_compile' 
 alias python='python'
+
+alias ca='conda activate '
+alias de='conda deactivate '
+alias gcp_status="ajax gcp launch --action=list"
+alias gcp_auth="ajax gcp auth"
+alias gcp_stop="ajax gcp launch stop --name="
+
 
 ##########################
 # work related alias 
 ##########################
-alias me="cd ~/fbsource/fbcode/experimental/yqw"
 
-ed ()
+edi ()
 {
   vim $myself
 }
@@ -27,14 +32,17 @@ sr ()
   source $bashrc
 }
 
-gvim()
+
+ajax_env ()
 {
-  if [[ $(hostname -s) =~ yqw-mbp ]]; then
-    echo "using mvim"
-    mvim "$@"
-  else
-    vim "$@"
-  fi
+  conda activate ajax
+  cd ~/Work/Code/apple/ajax
+}
+
+axlearn_env ()
+{
+  conda activate ajax
+  cd ~/Work/Code/apple/axlearn
 }
 
 mypwd()
@@ -51,27 +59,19 @@ mypwd()
   echo $tgt
 }
 
-latexenv()
+
+# gsutil related
+gsedit()
 {
-  if [ "$#" -ne 1 ]; then 
-    echo "usage: latexenv <dirname>"
-    return 0
-  fi
-  if [ ! -d "$DOTFILES_DIR/latex" ]; then
-    echo "no latex template installed, check your $DOTFILES_DIR/latex"
-    return 0
-  fi
-  mkdir -p "$1"
-  cp -r "$DOTFILES_DIR/latex"/* "$1"
+  BRed='\033[1;31m'
+  NC='\033[0m'
+  name=$(basename $1)
+  tmpfile=$(mktemp -p /tmp/gsutil -t ${name})
+  gsutil cp $1 $tmpfile
+  echo -e "copy ${BRed}$1${NC} to ${BRed}${tmpfile}${NC}"
+  vim ${tmpfile}
 }
 
-function mbuck()
-{
-  python "$DOTFILES_DIR/bash/mybuck.py" $@
+gsrm () {
+  gsutil -m rm $*
 }
-
-function mbucko()
-{
-  python "$DOTFILES_DIR/bash/mybuck-out.py" $@
-}
-

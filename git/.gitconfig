@@ -1,22 +1,35 @@
 [push]
   default = simple
+  autoSetupRemote = true
 [alias]
   st = status
   ci = commit
   br = branch
   co = checkout
+  sw = switch
   df = diff
-  lg = log -p
+  # show commit graph
+  # example: `git la` `git la -n 50` 
+  la = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n 20
+  # comparing lines of code changes betwee 2 different branches
+  # example: `git cmp master feature`
+  cmp = diff --stat 
   d = difftool
 [user]
-  name = Wang, Yongqiang
-  email = yqw@fb.com
-[include]
-  path = ~/.gitconfig.machine
+  name = Yongqiang Wang
+  email = yqw@apple.com
 [diff]
   tool = vimdiff
 [difftool]
   prompt = false
 [core]
   editor = vim
+  pager = cat
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[rebase]
+	updateRefs = true

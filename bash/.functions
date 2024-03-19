@@ -133,3 +133,12 @@ function v() {
 function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# my_ruff will ruff format the staged files
+function my_ruff() {
+  staged_file=($(git diff --name-only --relative --cached | tr '\n' ' '))
+  for file in "${staged_file[@]}"; do
+    echo "Formating ${file} ..."
+    ruff $file "$@"
+  done
+}

@@ -28,8 +28,8 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
-# Flip through autocompletion matches with Shift-Tab.
-# "\e[Z": menu-complete
+bindkey "\e\e[D": backward-word
+bindkey "\e\e[C": forward-word
 
 # Filtered history search
 #"\e[A": history-search-backward
