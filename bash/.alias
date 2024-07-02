@@ -13,9 +13,10 @@ alias python='python'
 alias ca='conda activate '
 alias de='conda deactivate '
 alias gcp_status="ajax gcp launch --action=list"
+alias live_jobs="python3 /Users/yongqiangwang/Work/Code/apple/ajax/ajax/scripts/ohmyajax/find_live_jobs.py "
+alias watch_live_jobs="watch -c -n 60 python3 /Users/yongqiangwang/Work/Code/apple/ajax/ajax/scripts/ohmyajax/find_live_jobs.py"
 alias gcp_auth="ajax gcp auth"
 alias gcp_stop="ajax gcp launch stop --name="
-
 
 ##########################
 # work related alias 
@@ -38,6 +39,14 @@ ajax_env ()
   conda activate ajax
   cd ~/Work/Code/apple/ajax
 }
+
+ajax2_env ()
+{
+  conda activate ajax2
+  cd ~/Work/Code/apple/ajax2
+}
+
+
 
 axlearn_env ()
 {
@@ -66,7 +75,16 @@ gsedit()
   BRed='\033[1;31m'
   NC='\033[0m'
   name=$(basename $1)
+  if [[ -f /tmp/gsutil ]]; then
+    echo -e "${BRED} remove /tmp/gsutil as an file${NC}"
+    rm /tmp/gsutil
+  fi
+  if [[ ! -d /tmp/gsutil ]]; then
+    mkdir -p /tmp/gsutil
+  fi
+
   tmpfile=$(mktemp -p /tmp/gsutil -t ${name})
+  echo $tmpfile
   gsutil cp $1 $tmpfile
   echo -e "copy ${BRed}$1${NC} to ${BRed}${tmpfile}${NC}"
   vim ${tmpfile}
@@ -74,4 +92,46 @@ gsedit()
 
 gsrm () {
   gsutil -m rm $*
+}
+
+gscmp () {
+  if [ $# -ne 2 ]; then
+    echo "must have 2 arguments"
+  else
+    local1=$(mktemp -p /tmp/gsutil -t compare.1)
+    local2=$(mktemp -p /tmp/gsutil -t compare.2)
+    gsutil cp $1 $local1
+    gsutil cp $2 $local2
+    vim -d $local1 $local2
+  fi
+}
+
+mytest() {
+  pytest -o log_cli=true --log-cli-level=DEBUG
+}
+
+rwork() {
+  conda activate klogin
+}
+
+ajaxkill () {
+  for name in "$@"; do
+    ajax gcp launch stop --name=$name
+  done
+}
+
+reinstall_axlearn() {
+  cd /Users/yongqiangwang/Work/Code/apple/ajax
+  pip install --force-reinstall --no-deps axlearn@git+https://github.com/apple/axlearn.git@$1
+}
+
+pack_ajax() {
+  cd /Users/yongqiangwang/Work/Code/apple/ajax
+  ajax gcp bundle --name=$1 --bundler_type=gcs
+}
+
+
+am_i_gauth() {
+  response=$(gcloud config list account --format "value(core.account)" 2> /dev/null)
+  echo $response
 }
